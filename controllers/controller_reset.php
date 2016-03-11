@@ -13,4 +13,11 @@ class controllerReset
 //        Header('Location: /');
         Die();
     }
+    
+    public function __toString()
+    {
+        $name = get_class($this);
+        
+        return $name;
+    }
 }

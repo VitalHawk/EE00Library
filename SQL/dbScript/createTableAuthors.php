@@ -11,6 +11,11 @@ public function __construct($num)
 {
     parent::__construct();
     self::$countRows = $num;
+//    $zzz = ImageCreate(100, 100);
+//    header("Content-Type: image/jpeg");
+//    ImageJpeg($zzz);
+//    nl2
+    
 }
 
 public function getClassName()

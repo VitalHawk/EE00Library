@@ -4,17 +4,20 @@ require_once 'controller.php';
 require_once DIR_MODEL . 'model_book.php';
 require_once DIR_MODEL . 'model_publisher.php';
 require_once DIR_MODEL . 'model_category.php';
+require_once DIR_MODEL . 'model_author.php';
 
 class ControllerBook extends Controller {
     public function Index($params) {
-        
-        $this->view->Show('books.tpl',
+//        var_dump($params);
+        $this->view->Show('books.latte',
                 array(
-                    'books' => Book::Find($this->conn, $params['pubId'], $params['catId']),
+                    'books' => Book::Find($this->conn, $params['pubId'], $params['catId'], $params['authId']),
                     'pubs' => array(-1 => '- Все -') + Publisher::GetAll($this->conn),
                     'pubId' => $params['pubId'],
                     'cats' => array(-1 => '- Все -') + Category::GetAll($this->conn),
-                    'catId' => $params['catId']
+                    'catId' => $params['catId'],
+                    'auth' => array(-1 => '- Все -') + Author::GetAll($this->conn),
+                    'authId' => $params['authId']
                     )
                 );
         

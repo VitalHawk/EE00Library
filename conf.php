@@ -12,9 +12,10 @@ define('DIR_VIEW', DIR_BASE.'templates/');
 define('DEFAULT_CTRL', 'Book');
 define('DEFAULT_ACTION', 'Index');
 
-define('DEFAULT_LAYOUT', 'layout.tpl');
+define('DEFAULT_LAYOUT', 'layout.latte');
 define('CONTENT_TPL_VAR', 'content_tpl');
 
 define('DIR_DB_SCR', DIR_BASE . 'SQL/dbScript/');
+define('LA_DIR', str_replace('\\', '/', getcwd()).'/latte/src/');
 
 ?>

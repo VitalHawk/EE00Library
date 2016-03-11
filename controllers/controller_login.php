@@ -1,7 +1,7 @@
 <?php
 require_once 'controller.php';
 require_once DIR_BASE . 'user.php';
-require_once DIR_DB_SCR . 'randNums.php';
+require_once DIR_DB_SCR . 'randNumsChars.php';
 
 class ControllerLogin extends Controller {
     public function Index($params) {
@@ -12,15 +12,16 @@ class ControllerLogin extends Controller {
         else {
             unset($_SESSION['user']);
         }
+//        echo $params['uri'];
         header('Location: ' . (isset($params['uri']) ? $params['uri'] : '/'), TRUE, 307);
     }
     
     public function RegisterForm($params) {
 	    
 	    foreach ($params as $k=>$v)
-	    echo $k . ' __ ' . $v;
+                echo $k . ' __ ' . $v;
 	tester::test($params['login']);
-        $prepareNum = new randNumsHex();
+        $prepareNum = new randNumsDec();
         echo $prepareNum->Next();
         
         if (isset($params['login'])) {

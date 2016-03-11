@@ -32,7 +32,7 @@ class Book {
     public static function Insert($conn, $params) {
         return NULL;
     }
-    public static function Find($conn, $pubId = NULL, $catId = NULL) {
+    public static function Find($conn, $pubId = NULL, $catId = NULL, $authId = NULL) {
         $q = "Select b.id, b.name, b.date, b.publisher_id, p.name, b.category_id, c.name, ".
                 "a.id, a.name, a.surname, a.birthdate " .
                 "From Publishers as p, Categories as c, Books as b " .
@@ -46,6 +46,10 @@ class Book {
         if (isset($catId) && $catId >= 0) {
             $q = $q . " And c.id = $catId";
         }
+        if (isset($authId) && $authId >= 0) {
+            $q = $q . " And a.id = $authId";
+        }
+
 //echo $q;
         $res = $conn->query($q);
         $books = array();

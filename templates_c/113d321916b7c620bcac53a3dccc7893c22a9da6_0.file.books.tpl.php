@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28-dev/77, created on 2016-01-18 11:33:15
+/* Smarty version 3.1.28-dev/77, created on 2016-02-28 23:15:20
   from "C:\OpenServer\domains\Library\templates\books.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28-dev/77',
-  'unifunc' => 'content_569ca34bb27eb3_50657323',
+  'unifunc' => 'content_56d355586c7e07_13590832',
   'file_dependency' => 
   array (
     '113d321916b7c620bcac53a3dccc7893c22a9da6' => 
     array (
       0 => 'C:\\OpenServer\\domains\\Library\\templates\\books.tpl',
-      1 => 1453070096,
+      1 => 1456690517,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_569ca34bb27eb3_50657323 ($_smarty_tpl) {
+function content_56d355586c7e07_13590832 ($_smarty_tpl) {
 if (!is_callable('smarty_function_html_options')) require_once 'C:/OpenServer/domains/Library/smarty/libs/plugins\\function.html_options.php';
 ?>
 <div>
@@ -28,7 +28,8 @@ if (!is_callable('smarty_function_html_options')) require_once 'C:/OpenServer/do
 
         <?php echo smarty_function_html_options(array('name'=>"pubId",'options'=>$_smarty_tpl->tpl_vars['pubs']->value,'selected'=>$_smarty_tpl->tpl_vars['pubId']->value),$_smarty_tpl);?>
 
-        <input type="submit" value="Refresh">
+
+        <input type="submit" class="btn btn-info btn-md" value="Refresh"></button>
     </form>
 
     <table>

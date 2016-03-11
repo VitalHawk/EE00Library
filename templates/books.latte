@@ -1,0 +1,96 @@
+<div>
+    <form method="get" action="/Book/Index">
+        <select n:attr="name => catId">
+            {default $catId = -1, $pubId = -1, $authId = -1}
+            
+            {foreach $cats as $k => $value}
+                <option{if $iterator->getCounter() == $catId + 1} selected{/if} n:attr="value => $iterator->first ? -1 : $iterator->getCounter() - 1">{$value}</option>
+            {/foreach}<!--kak snosit stroku bez razdelenija ???-->
+        </select>
+        
+        <select n:attr="name => pubId">
+            {foreach $pubs as $k => $value}
+                <option{if $iterator->getCounter() == $pubId + 1} selected{/if}  n:attr="value => $iterator->first ? -1 : $iterator->getCounter() - 1">{$value}</option>
+            {/foreach}
+        </select>
+        
+        <select n:attr="name => authId">
+            {foreach $auth as $k => $value}
+                <option{if $iterator->getCounter() == $authId + 1} selected{/if} n:attr="value => $iterator->first ? -1 : $iterator->getCounter() - 1">{$value}</option>
+            {/foreach}
+        </select>
+        
+        <input type="submit" class="btn btn-info btn-md" value="Refresh" />
+    </form>
+    <!--    <a href="http://example.com/{$name|escapeurl}">{$name}</a>-->
+    
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Publisher</th>
+                <th>Authors</th>
+            </tr>
+        </thead>
+        <tbody>
+            {while list($key, $value) = each($books)}
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$value->name|escape}</td>
+                    <td>{$value->date->format('d.m.Y')}</td>
+                    <td>{$value->category}</td>
+                    <td>{$value->publisher}</td>
+                    <td>{foreach $value->authors as $item}{$item}<br />{/foreach}</td>
+                </tr>
+            {/while}
+        </tbody>
+    </table>
+</div>
+<!--
+<?php
+
+function createGreeter(&$who) {
+              static $counter = array();
+              $counter[0]++;
+              if ($counter < 10 || $counter > 90)
+              return function() use (&$who, $counter) {
+                  echo "Hello $who " . print_r($counter[0]++) . " " . "<br>" . "____";
+              };
+              else
+              return function() use (&$counter)
+              {
+                    $counter = 100;
+                    echo "Uze $counter" . "<br>";
+              };
+}
+
+$text = "World";
+$greeter = createGreeter($text);
+$greeter();
+$text = "Vobla";
+$greeter();
+$greeter();
+$zzz = createGreeter($text);
+$zzz();
+$zzz();
+$greeter();
+$zzz();
+$zzzz = createGreeter($text);
+$zzzz();
+$greeter();
+$zzz();
+$zzzzz = createGreeter($text);
+$zzzzz();
+$zzz();
+$zzzz();
+$zzzzz();
+$greeter();
+$zzz();
+$zzzz();
+$zzzzz();
+$zzzzz();
+?>
+-->
