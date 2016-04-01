@@ -1,7 +1,10 @@
 <ul>
     <li><a href="/Book/Index" >Поиск книг</a></li>
-    {if $_SESSION['user']->login}
+    
+    {if $_SESSION['user']}
     <li><a href="/Book/Add" >Добавление книг</a></li>
+    <p>_____________________</p>
+    Login: [{$_SESSION['user']->login}]<br />
     {/if}
     
 </ul>

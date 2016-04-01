@@ -4,62 +4,87 @@
         <title>main page</title>
     </head>
     <body>
-        {include 'login.latte'}
-        <br>
+<!--        {include 'login.latte'}
+        <br>-->
         
+  <!--bezpecnostni riziko https http-->
+  <!--http://www.jqwidgets.com/-->
+  <!--tabindex-->
+  <!--mozno ispolzovat constanty na eti hrefy ?? !!!!!!!!!!!!-->
+  <!--ui error-->
+  <!--
+  The Difference Between Arrays and Objects
+
+In JavaScript, arrays use numbered indexes.  
+
+In JavaScript, objects use named indexes.
+
+Note 	Arrays are a special kind of objects, with numbered indexes.
+
+When to Use Arrays. When to use Objects.
+
+    JavaScript does not support associative arrays.
+    You should use objects when you want the element names to be strings (text).
+    You should use arrays when you want the element names to be numbers.
+  -->
+  <script src="/cssAndScript/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
+  <script src="/cssAndScript/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+  <link href="/cssAndScript/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+  
   <link rel="stylesheet" type="text/css" href="/cssAndScript/styleSheet/layout.css" />
-
-  <!--mozno ispolzovat constanty na eti hrefy ??-->
   
-        <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Logo</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="/Login/Register/">Register profile</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/Login/Register/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-  
-<div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-    </div>
-    <div class="col-sm-8 text-left"> 
-        <h1>Мой супер сайт</h1>
-        {include 'menu.latte'}
-        
+ 
+{include "bootstrapGrid/bootstrapPart1.latte"}<!--navbar-->
+{include "bootstrapGrid/bootstrapPart2.latte"}<!--container-fluid part1-->
         {include $content_tpl}
-      <hr>
-      <h3>Test</h3>
-      <p>Content ...</p>
-    </div>
-  </div>
-</div>
+{include "bootstrapGrid/bootstrapPart3.latte"}<!--container-fluid part2-->
+{include "bootstrapGrid/bootstrapPart4.latte"}<!--footer-->
+        {include "login.latte"}
 
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
+{include "bootstrapGrid/bootstrapPart3.latte"}<!--footer-->
 
+{include 'ui_components/modalLogin.latte'}<!--modal login on click Login-->
+
+
+
+<script>
+jQuery(document).ready(
+function()
+{
+var pathToScript = "<?php echo DIR_JS;?>";
+var scriptCollection = [[pathToScript + "modalLogin.js", "text/javascript"]];
+for(var i in scriptCollection)
+{
+    var readyScript = $("<script>").attr("src", scriptCollection[i][0]).attr("type", scriptCollection[i][1]);
+    $("body").prepend(readyScript);
+}
+
+}
+);
+</script>
+
+<!--finish------------------------------------------------------------------------------------>
+
+<button>zzzzzzz</button>
+
+<style>
+.line-separator{
+
+height:1px;
+
+background:#717171;
+
+border-bottom:1px solid #313030;
+
+}
+</style>
+<!--
+<div class="line-separator">zzzzz</div>
+<div class="line-separator">zzzzz</div>
+<div class="line-separator">zzzzz</div>
+-->

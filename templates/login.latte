@@ -1,7 +1,7 @@
 <div>
     <form action="/Login" method="POST">
         <input type="hidden" name="uri" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
-        {if $_SESSION['user']->user}
+        {if $HTTP_SESSION_VARS['user']->user}
             Привет, {$_SESSION['user']->name} {$_SESSION['user']->surname}
             <input type="submit" value="Sign out..."/>
             <a href="/Login/RegisterForm/login/{$_SESSION['user']->login}">Update</a>

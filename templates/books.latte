@@ -1,30 +1,35 @@
-<div>
+<div id="mainDiv">
     <form method="get" action="/Book/Index">
         <select n:attr="name => catId">
             {default $catId = -1, $pubId = -1, $authId = -1}
-            
             {foreach $cats as $k => $value}
-                <option{if $iterator->getCounter() == $catId + 1} selected{/if} n:attr="value => $iterator->first ? -1 : $iterator->getCounter() - 1">{$value}</option>
+                <option n:attr="value => $iterator->first ? -1 : $cats[$k]->id"{if $cats[$k]->id == $catId} selected{/if}>{$value}</option>
             {/foreach}<!--kak snosit stroku bez razdelenija ???-->
         </select>
         
         <select n:attr="name => pubId">
             {foreach $pubs as $k => $value}
-                <option{if $iterator->getCounter() == $pubId + 1} selected{/if}  n:attr="value => $iterator->first ? -1 : $iterator->getCounter() - 1">{$value}</option>
+                <option n:attr="value => $iterator->first ? -1 : $pubs[$k]->id"{if $pubs[$k]->id == $pubId} selected{/if}>{$value}</option>
             {/foreach}
         </select>
         
         <select n:attr="name => authId">
             {foreach $auth as $k => $value}
-                <option{if $iterator->getCounter() == $authId + 1} selected{/if} n:attr="value => $iterator->first ? -1 : $iterator->getCounter() - 1">{$value}</option>
+                <option n:attr="value => $iterator->first ? -1 : $auth[$k]->id"{if $auth[$k]->id == $authId} selected{/if}>{$value}</option>
             {/foreach}
         </select>
         
         <input type="submit" class="btn btn-info btn-md" value="Refresh" />
+        <!--
+            {foreach $cats as $i => $value}
+                <div>{$cats[$i]->id}</div>
+            {/foreach}
+            <div>YYYYYYYYYYY</div>
+        -->
     </form>
     <!--    <a href="http://example.com/{$name|escapeurl}">{$name}</a>-->
     
-    <table>
+    <table id="mainTable">
         <thead>
             <tr>
                 <th>id</th>

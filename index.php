@@ -17,6 +17,12 @@ try
         header("Location: /" . $prm, TRUE, 301);
     }
 
+//$string = 'April 15, 2003';
+//$pattern = '/\d{3}/';
+//$replacement = 'z';
+//echo preg_replace($pattern, $replacement, $string);
+
+
 //    print_r($GLOBALS);
 //    print_r($_REQUEST);
 //    print_r($_SERVER);
@@ -27,12 +33,12 @@ try
     
     define('__ROOT__', dirname(__FILE__) . '/');
     
-    session_start();
     
     require_once 'conf.php';
     require_once 'user.php';
     require_once 'router.php';
 
+    session_start();
     
     
 //    $test = $_SERVER['HTTP_USER_AGENT'];
@@ -62,17 +68,24 @@ try
 //    echo $controller;
 //    echo "&nbsp&nbsp&nbsp&nbsp";
 //    echo $action;
-//    echo "<hr>";
-    
+//    echo "<hr>";)
+//    if (isset($_SESSION['user'])) {
+//        tester::TEST($_SESSION['user']); //var_dump ($_SESSION['user']);
+//    }
+//    else {
+//        echo "not set";
+//    }
+
+//    echo $_SESSION['login'] . "••••••••";
     $controller->$action($params);
-    
+//    echo $SESSION['test'];
 //    echo "&nbsp&nbsp&nbsp&nbsp";
 //    echo $controller;
 //    echo "&nbsp&nbsp&nbsp&nbsp";
 //    echo $action;
 //    echo $ctrl_class;
 //    require_once 'latte.php';
-    
+    //tester::TEST($_SESSION['user']->login);
 }
 catch(Exception $ex) {
     echo 'Error!!!' . $ex;

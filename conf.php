@@ -17,5 +17,7 @@ define('CONTENT_TPL_VAR', 'content_tpl');
 
 define('DIR_DB_SCR', DIR_BASE . 'SQL/dbScript/');
 define('LA_DIR', str_replace('\\', '/', getcwd()).'/latte/src/');
+define('DIR_CSS', '/' . 'cssAndScript/styleSheet/');
+define('DIR_JS', '/' . 'cssAndScript/javaScript/');
 
 ?>

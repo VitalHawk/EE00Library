@@ -26,6 +26,7 @@ class User {
             $user->surname = $row[2];
             $user->isAdmin = $row[3];
             $user->login = $login;
+//            echo "..............." . $user->login;
             return $user;
         }
         return null;

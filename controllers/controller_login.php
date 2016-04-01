@@ -7,22 +7,54 @@ class ControllerLogin extends Controller {
     public function Index($params) {
         if (isset($params['login']) &&
                 ($user = User::Login($params['login'], $params['password']))) {
+            //echo get_class($user);
+            //$_SESSION["user"] = $user->login;
+//            foreach ($user as $k => $v)
+//            {
+////                echo " _______ " . $k . "   " . $v;
+//                $_SESSION[$k] = $v;
+//            }
+            
             $_SESSION['user'] = $user;
+//            foreach($_SESSION['user'] as $i)
+//                echo "____ " . $i;
+//            $_SESSION['test'] = $user->login;
+//            $_SESSION['login'] = $user->logín;
+//            tester::TEST($_SESSION['user']->login);
+//            $HTTP_SESSION_VARS['user']->login;
         }
         else {
             unset($_SESSION['user']);
         }
+//                    tester::TEST($_SESSION['user']->login);
+ //       echo $params['login'] . "  " . $params['password'];
 //        echo $params['uri'];
-        header('Location: ' . (isset($params['uri']) ? $params['uri'] : '/'), TRUE, 307);
+//                    tester::TEST($_SESSION['user']->login);
+//        tester::TEST("controllerLogin " . $params['uri'] . "  ");
+//        echo $_SESSION["uri"];
+        if (isset($params['uri']))
+        {
+            header('Location: ' . $params['uri'], TRUE, 307);
+        }
+        else
+            if (isset($_SESSION['uri']))
+            {
+                header('Location: ' . $_SESSION['uri'], TRUE, 307);
+                unset($_SESSION['uri']);
+            }
+            else
+            {
+                header('Location: /');
+            }
     }
     
     public function RegisterForm($params) {
 	    
-	    foreach ($params as $k=>$v)
-                echo $k . ' __ ' . $v;
+//	    foreach ($params as $k=>$v)
+//                echo $k . ' __ ' . $v;
 	tester::test($params['login']);
         $prepareNum = new randNumsDec();
-        echo $prepareNum->Next();
+//        echo $prepareNum->Next();
         
         if (isset($params['login'])) {
             $user = User::Load($params['login']);
@@ -31,7 +63,7 @@ class ControllerLogin extends Controller {
             $user = NULL;
         }
         //echo $this;
-        $this->view->Show('user_register.tpl', array('user' => $user, 'test' => $this->zzz() ));
+        $this->view->Show('user_register.latte', array('user' => $user, 'test' => $this->zzz() ));
     }
     
     public function zzz()       
@@ -56,9 +88,11 @@ class ControllerLogin extends Controller {
     public function Register($params) {
 	
         $user = User::Load($params['login']);
+        var_dump($params);
         $saved = false;
         if ($user) {
             $user->Set($params);
+            tester::TEST("________z___________" . $params);
             $saved = $user->Save();
         }
         else {
@@ -71,7 +105,7 @@ class ControllerLogin extends Controller {
             header('Location: /Login/UserView/login/' . $user->login, TRUE, 307);
         }
         else {
-            header('Location: /Login/Register/', TRUE, 307);
+//            header('Location: /Login/Register/', TRUE, 307);
         }
     }
     

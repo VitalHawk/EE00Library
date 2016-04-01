@@ -1,0 +1,42 @@
+
+<!--Kak vuydit u latte nazvanie current latte file ????-->
+<!--Mozet li head repeate in html file ???-->
+<!--Kak importirovat js file v js file ???-->
+<!--cto takoe stdClass ???-->
+<div class="reg-edit-user-form"  id="user-register">
+<p class="validateTips" style="font-size: 0.7em;">All form fields are required.</p>
+<form action="/Login/RegisterForm" method="POST">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" value="{$user->name}" />
+    </div>
+    <div class="form-group">
+        <label for="surname">Surname</label>
+        <input type="text" name="surname" value="{$user->surname}" />
+    </div>
+    <div class="form-group">
+        <label for="e-mail">E-mail</label>
+        <input type="email" name="login" value="{$user->login}" />
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" />
+    </div>
+        <input type="button" value="Save" />
+        <input type="submit" tabindex="-1" style="position: absolute; top: -1000px;" />
+        {foreach $test as $hash}
+            {$hash}
+        {/foreach}
+        {*$test->call()*}
+    
+</form>
+</div>
+
+<head>
+    <script type="text/javascript" src="<?php echo DIR_JS . validForm . '.' . js ?>"></script>
+    <link rel="stylesheet" type="text/css" 
+          href="<?php echo DIR_CSS . preg_replace('/.latte/', '.css', $content_tpl);?>" />
+    <script type="text/javascript" 
+          src="<?php echo DIR_JS . preg_replace('/.latte/', '.js', $content_tpl);?>"></script>
+          
+</head>
