@@ -3,7 +3,9 @@
 <!--Mozet li head repeate in html file ???-->
 <!--Kak importirovat js file v js file ???-->
 <!--cto takoe stdClass ???-->
-<div class="reg-edit-user-form"  id="user-register">
+<!-- v cem raznica mezdu && i &? -->
+<div id="user-register">
+<div class="reg-edit-user-form">
 <p class="validateTips" style="font-size: 0.7em;">All form fields are required.</p>
 <form action="/Login/RegisterForm" method="POST">
     <div class="form-group">
@@ -24,15 +26,17 @@
     </div>
         <input type="button" value="Save" />
         <input type="submit" tabindex="-1" style="position: absolute; top: -1000px;" />
-        {foreach $test as $hash}
-            {$hash}
+        {foreach $test as $hash=>$value}
+            <br>
+            {$hash} = {$value} <!--daze takaja elementar i to ne idet ...$value $hash-->
         {/foreach}
         {*$test->call()*}
     
 </form>
 </div>
-
-<head>
+</div>
+        
+<head><!-- perenesti v layout ???-->
     <script type="text/javascript" src="<?php echo DIR_JS . validForm . '.' . js ?>"></script>
     <link rel="stylesheet" type="text/css" 
           href="<?php echo DIR_CSS . preg_replace('/.latte/', '.css', $content_tpl);?>" />

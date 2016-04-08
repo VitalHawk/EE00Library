@@ -1,13 +1,14 @@
   $(function() {
+    var wrapper = $("#dialog-form");
     var dialog, form,
  
       // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
       emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
       
-      email = $( "#email" ),
-      password = $( "#password" ),
+      email = wrapper.find( "#email" ),
+      password = wrapper.find( "#password" ),
       allFields = $( [] ).add( email ).add( password ),
-      tips = $( ".validateTips" );
+      tips = wrapper.find( ".validateTips" );
  
     function updateTips( t ) {
       tips
@@ -55,11 +56,11 @@
 //          "<td>" + email.val() + "</td>" +
 //          "<td>" + password.val() + "</td>" +
 //        "</tr>" );
-        var submit = $("#dialog-form input[type=submit]");
+        var submit = wrapper.find("input[type=submit]");
 //        var email = $("#dialog-form #email");
 //        alert($("#dialog-form #email").val());
-        $("#dialog-form #email").attr("value", $("#dialog-form #email").val());
-        $("#dialog-form #password").attr("value", $("#dialog-form #password").val());
+        wrapper.find("#email").attr("value", wrapper.find("#email").val());
+        wrapper.find("#password").attr("value", wrapper.find("#password").val());
         submit.click();
 //        alert(email);
         dialog.dialog( "close" );
@@ -67,7 +68,7 @@
       return valid;
     }
  
-    dialog = $( "#dialog-form" ).dialog({
+    dialog = $( wrapper ).dialog({
       autoOpen: false,
       height: 300,
       width: 350,
@@ -92,7 +93,7 @@
     if ($("#login-user").children().text().lastIndexOf("Login") > 0)
     $( "#login-user").button().on( "click", function() {
       dialog.dialog( "open" );
-      $("#dialog-form").parent().css("top", "24%");
+      $(wrapper).parent().css("top", "24%");
     });
   });
 

@@ -4,16 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/OpenServer/domains/Library/cssAndScript/javaScript/validForm.js</file>
-            <file>file:/C:/OpenServer/domains/Library/cssAndScript/styleSheet/user_register.css</file>
+            <file>file:/C:/OpenServer/domains/Library/templates/books.latte</file>
             <file>file:/C:/OpenServer/domains/Library/index.php</file>
             <file>file:/C:/OpenServer/domains/Library/cssAndScript/javaScript/user_register.js</file>
             <file>file:/C:/OpenServer/domains/Library/templates/login.latte</file>
             <file>file:/C:/OpenServer/domains/Library/user.php</file>
-            <file>file:/C:/OpenServer/domains/Library/templates/layout.latte</file>
             <file>file:/C:/OpenServer/domains/Library/controllers/controller_login.php</file>
             <file>file:/C:/OpenServer/domains/Library/cssAndScript/javaScript/modalLogin.js</file>
             <file>file:/C:/OpenServer/domains/Library/templates/menu.latte</file>
-            <file>file:/C:/OpenServer/domains/Library/templates/ui_components/modalLogin.latte</file>
             <file>file:/C:/OpenServer/domains/Library/templates/user_register.latte</file>
         </group>
     </open-files>

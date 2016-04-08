@@ -1,17 +1,18 @@
-function startValidation()
+function validForm(prefix)
 {
-var dialog, form,
+var 
  
       // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
       emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
       
-      email = $( "#email" ),
-      password = $( "#password" ),
+      email = $( prefix + "#email" ),
+      password = $( prefix + "#password" ),
       allFields = $( [] ).add( email ).add( password ),
-      tips = $( ".validateTips" );
- 
+      tips = $( prefix + " .validateTips" );
+//      alert(tips.text());
+    
     function updateTips( t ) {
-        alert(t);
+//        alert(t);
       tips
         .text( t )
         .addClass( "ui-state-highlight" );
@@ -20,7 +21,7 @@ var dialog, form,
       }, 500 );
     }
  
-    function checkLength( o, n, min, max ) {
+    this.checkLength = function checkLength( o, n, min, max ) {
       if ( o.val().length > max || o.val().length < min ) {
         o.addClass( "ui-state-error" );
         updateTips( "Length of " + n + " must be between " +
@@ -29,7 +30,7 @@ var dialog, form,
       } else {
         return true;
       }
-    }
+    };
  
     function checkRegexp( o, regexp, n ) {
       if ( !( regexp.test( o.val() ) ) ) {
@@ -40,8 +41,14 @@ var dialog, form,
         return true;
       }
     }
- 
-    function addUser() {
+    
+    this.checkEmail = function ckeckEmail(elem)
+    {
+        var valid = checkRegexp(elem, emailRegex, "eg. ui@jquery.com");
+        return valid;
+    };
+    
+    this.startValidation = function startValidation() {
       var valid = true;
 //      alert(allFields.size());
       allFields.removeClass( "ui-state-error" );
@@ -65,27 +72,9 @@ var dialog, form,
         $("#dialog-form #password").attr("value", $("#dialog-form #password").val());
         submit.click();
 //        alert(email);
-        dialog.dialog( "close" );
       }
       return valid;
     }
- 
-    dialog = $( "#dialog-form" ).dialog({
-      autoOpen: false,
-      height: 300,
-      width: 350,
-      modal: true,
-      buttons: {
-        "Login": addUser,
-        Cancel: function() {
-          dialog.dialog( "close" );
-        }
-      },
-      close: function() {
-        form[ 0 ].reset();
-        allFields.removeClass( "ui-state-error" );
-      }
-    });
-    return "zzzzzz";
+    
 };
  

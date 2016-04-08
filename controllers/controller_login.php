@@ -66,7 +66,7 @@ class ControllerLogin extends Controller {
         $this->view->Show('user_register.latte', array('user' => $user, 'test' => $this->zzz() ));
     }
     
-    public function zzz()       
+    public function zzz()
     {
             $q = "SELECT * FROM temp_users_table";
             
