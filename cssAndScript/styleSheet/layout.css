@@ -69,3 +69,11 @@
     padding: 10px;
  }
  
+ #booksImg
+ {
+     margin-top: 100px;
+ }
+ #booksImg img
+ {
+     width: 200px;
+ }
