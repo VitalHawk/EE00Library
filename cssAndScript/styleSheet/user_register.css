@@ -11,3 +11,20 @@
     {
         margin: 64px 0 0 32px;
     }
+    
+    
+    #user-register .btn-group + .btn-group > *
+    {
+        margin: 32px;
+    }
+    
+    #user-register #button-set
+    {
+        margin-top: 32px;
+    }
+    
+    
+    #user-register #form-set
+    {
+        
+    }

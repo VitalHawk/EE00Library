@@ -52,8 +52,8 @@ class ControllerLogin extends Controller {
 	    
 //	    foreach ($params as $k=>$v)
 //                echo $k . ' __ ' . $v;
-	tester::test($params['login']);
-        $prepareNum = new randNumsDec();
+//	tester::test($params['login']);
+//        $prepareNum = new randNumsDec();
 //        echo $prepareNum->Next();
         
         if (isset($params['login'])) {
@@ -88,12 +88,18 @@ class ControllerLogin extends Controller {
     public function Register($params) {
 	
         $user = User::Load($params['login']);
-        var_dump($params);
+//        var_dump($params);
         $saved = false;
         if ($user) {
-            $user->Set($params);
-            tester::TEST("________z___________" . $params);
-            $saved = $user->Save();
+//            $user->Set($params);
+//            tester::TEST("________z___________" . $params);
+//            $saved = $user->Save();
+//            echo user_admin();
+//            
+//            echo $this->sanitizeAndValidate($params);
+//            echo filter_var($this->sanitizeAndValidate($params), FILTER_VALIDATE_BOOLEAN);
+//          da cto-z eto takoe, a ??????????????????????????????????
+            echo $this->sanitizeAndValidate($params) ? "1" : "0";
         }
         else {
             $user = User::Add($params);
@@ -109,4 +115,28 @@ class ControllerLogin extends Controller {
         }
     }
     
+
+
+private function sanitizeAndValidate($params)
+{
+    $valid = 1;
+    
+    $valid *= (bool)($valid && filter_var($params['name'], FILTER_SANITIZE_STRING));
+    $valid *= (bool)($valid && filter_var($params['surname'], FILTER_SANITIZE_STRING));
+    
+    $valid *= (bool)($valid && filter_var($params['login'], FILTER_SANITIZE_EMAIL));
+    $valid *= (bool)($valid && filter_var($params['login'], FILTER_VALIDATE_EMAIL));
+    
+    
+/*    if (filter_var($params['login'], FILTER_SANITIZE_EMAIL) === false)//pocemu ne rabotet == ???
+            return false;*/
+    $str = "Is your name O'Reilly?";
+
+// Outputs: Is your name O\'Reilly?
+echo addslashes($str);
+    
+    echo "____";
+    return $valid;
+}
+
 }

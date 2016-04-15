@@ -8,7 +8,16 @@
       <p><a href="#">Link</a></p>
 -->
     {include '../menu.latte'}
+    <div class="hidden-xs" id="booksImg">
+        <img src="/cssAndScript/Images/small.jpg" alt="books" />
+    </div>
     </div>
     <div class="col-sm-10 text-left"> 
         <h1>Library website</h1>
+        <?php
+            $addr = $_SERVER['REMOTE_ADDR'];
+            echo $addr . " ";
+            echo gettype($addr) . " ";
+            echo preg_match('/^127.0 $0.1/', $addr) . " ";
+        ?>
 

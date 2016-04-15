@@ -37,8 +37,13 @@ try
     require_once 'conf.php';
     require_once 'user.php';
     require_once 'router.php';
-
-    session_start();
+    
+    $v = array();
+    $v['cookie_lifetime'] = 10;
+//    var_dump($v);
+    session_start($v);//pocemu eto ne rabotaet ???
+    
+    
     
     
 //    $test = $_SERVER['HTTP_USER_AGENT'];
@@ -46,6 +51,7 @@ try
 //    print_r($browser);
     
     $req_uri = filter_input(INPUT_SERVER, 'REQUEST_URI');
+    
 //    echo $req_uri;
     //$post_get = (filter_input_array(INPUT_POST) ?: array()) + (filter_input_array(INPUT_GET) ?: array());
     $post = filter_input_array(INPUT_POST);
