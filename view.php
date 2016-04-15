@@ -37,13 +37,13 @@ class View extends Latte\Engine {
 ////        $this->layout='';
 //        $this->layout = NULL;
 //        echo empty($this->layout);
-        if (empty($this->layout)) {
+        $parameters = $params + array(CONTENT_TPL_VAR => $tpl, 'view' => $this);
+        if (true) { // empty($this->layout)) {
             $this->render(DIR_VIEW . $tpl, $params);
         }
         else {
 //            $this->render(DIR_VIEW . $tpl, $params);
 //            print_r($params);
-            $parameters = $params + array(CONTENT_TPL_VAR => $tpl, 'view' => $this);
             $this->render(DIR_VIEW . $this->layout, $parameters);
         }
         

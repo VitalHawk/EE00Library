@@ -68,6 +68,7 @@ class ControllerLogin extends Controller {
     
     public function zzz()
     {
+        return null;
             $q = "SELECT * FROM temp_users_table";
             
             $res = $this->conn->query($q);

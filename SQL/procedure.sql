@@ -1,6 +1,6 @@
 DROP PROCEDURE IF EXISTS nacist_podkategorie;
-delimiter $$;
 
+delimiter $$
 CREATE PROCEDURE nacist_podkategorie(IN startid INT, OUT n INT)
 BEGIN
 DECLARE pocet, poradi INT DEFAULT 0;
@@ -19,6 +19,11 @@ INSERT INTO __podkat VALUES(0, 0, startid, katNazev);
 END IF;
 
 SELECT COUNT(*) FROM __podkat INTO n;
-END
+END $$
+delimiter ;
 
 SHOW PROCEDURE STATUS;
+
+
+CALL nacist_podkategorie(1, @param2);
+Select @param2;

@@ -1,9 +1,17 @@
+
+{layout 'layout.latte'}
+{block active-home}active{/block}
+
+{block content}
 <div id="mainDiv">
     <form method="get" action="/Book/Index">
         <select n:attr="name => catId">
             {default $catId = -1, $pubId = -1, $authId = -1}
             {foreach $cats as $k => $value}
-                <option n:attr="value => $iterator->first ? -1 : $cats[$k]->id"{if $cats[$k]->id == $catId} selected{/if}>{$value}</option>
+                <option n:attr=
+                        "value => $iterator->first ? -1 : $cats[$k]->id"{if $cats[$k]->id == $catId} 
+                        selected{/if}>{$value}
+                </option>
             {/foreach}<!--kak snosit stroku bez razdelenija ???-->
         </select>
         
@@ -54,6 +62,9 @@
         </tbody>
     </table>
 </div>
+        
+{/block}
+
 <!--
 <?php
 

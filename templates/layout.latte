@@ -38,10 +38,14 @@ When to Use Arrays. When to use Objects.
   
   <link rel="stylesheet" type="text/css" href="/cssAndScript/styleSheet/layout.css" />
   
- 
+         {block active-home}{/block}
+
 {include "bootstrapGrid/bootstrapPart1.latte"}<!--navbar-->
 {include "bootstrapGrid/bootstrapPart2.latte"}<!--container-fluid part1-->
-        {include $content_tpl}
+        {* include $content_tpl *}
+        {block content}{/block}
+        {include content}
+        {* block active-home}{/block *}
 {include "bootstrapGrid/bootstrapPart3.latte"}<!--container-fluid part2-->
 {include "bootstrapGrid/bootstrapPart4.latte"}<!--footer-->
         {include "login.latte"}

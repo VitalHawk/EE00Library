@@ -8,15 +8,20 @@
       </button>
 <!--        <span><a class="navbar-brand" href="#">Logo</a></span>-->
     </div>
+        [ {block active-home}{/block} ]
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Home</a></li>
-        <li><a href="#">About</a></li>
+          
+        <li class=""><a href="/">Home</a></li>
+        <li class="{block active-about}{/block}"><a href="#">About</a></li>
+        <li class="{block active-reg}{/block}"><a 
+                href="/Login/RegisterForm{$_SESSION['user'] ? '/login/' . $_SESSION['user']->login : ''}">
         {if $_SESSION['user']}
-            <li><a href="/Login/RegisterForm/login/{$_SESSION['user']->login}">Edit profile</a></li>
+            Edit profile
         {else}
-            <li><a href="/Login/RegisterForm/">Register profile</a></li>
+            Register profile
         {/if}
+        </a></li>
         <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
